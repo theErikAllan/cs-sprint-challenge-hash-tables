@@ -28,32 +28,31 @@ class TestEx2(unittest.TestCase):
     def test_large(self):
         files = []
 
-        for i in range(500000):
+        for i in range(1000):
             files.append(f"/dir{i}/file{i}")
 
-        for i in range(500000):
+        for i in range(1000):
             files.append(f"/dir{i}/dirb{i}/file{i}")
 
         queries = []
 
-        for i in range(1000000):
+        for i in range(1000):
             queries.append(f"nofile{i}")
 
         queries += [
-            "file3490",
+            "file340",
             "file256",
-            "file999999",
-            "file8192"
+            "file9999",
+            "file812"
         ]
-
 
         result = finder(files, queries)
         result.sort()
 
         self.assertTrue(result == ['/dir256/dirb256/file256',
-            '/dir256/file256', '/dir3490/dirb3490/file3490',
-            '/dir3490/file3490', '/dir8192/dirb8192/file8192',
-            '/dir8192/file8192'])
+            '/dir256/file256', '/dir340/dirb340/file340',
+            '/dir340/file340', '/dir812/dirb812/file812',
+            '/dir812/file812'])
 
 if __name__ == '__main__':
     unittest.main()
