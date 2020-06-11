@@ -8,6 +8,7 @@ following form:
 
 ```
 (zero, one)
+(index of higher 'weight', index of lower 'weight')
 ```
 
 where each element represents the item weights of the two packages.
